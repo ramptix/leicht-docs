@@ -1,0 +1,68 @@
+---
+title: Prompts
+description: 'Load prompts from Leicht'
+---
+
+Prompts are essential when it comes to custom assistants. You can create a tailored voice for your brand or shape the LLM's response by using them.
+
+Leicht uses [ramptix/preprompted-data](https://github.com/ramptix/preprompted-data) as the prompt index to download prompts on-demand — you can find prompts across various topics there.
+
+## Use A Prompt
+
+1. Check out the Wiki of `preprompted-data` and copy the name of your desired prompt. We'll use the name `basic` for the sake of simplicity.
+2. From `leicht.prompts`, we'll import the `get_prompt()` function to fetch a prompt and cache it.
+
+```python
+from leicht.prompts import get_prompt
+
+# Get the prompt
+get_prompt("basic")
+
+# If you wish to disable caching, add the
+# no_cache option
+get_prompt("basic", no_cache=True)
+```
+
+...and that's it! [2 steps](https://youtube.com/watch?v=Z_MvkyuOJgk) and we're good to go.
+
+## Prompts With Variables
+
+Some prompts, for instance, `awesome/character` which requires two variables, support inserting texts.
+
+`awesome/character` requires:
+- `{character}` – The character name.
+- `{series}` – The series featuring the character.
+
+We can insert them into the prompt using Leicht:
+
+```python
+get_prompt(
+  "awesome/character",
+  character="Walter White",
+  series="Breaking Bad"
+)
+```
+
+## Usage With Assistant
+
+The `leicht.prompts` module works seamlessly with the `Assistant` API. (Or should I say we can literally just pass the value in 😱😱💀)
+
+```python
+from leicht import Assistant
+
+# Initialize an assistant
+assistant = Assistant(
+  description=get_llm("store/genz-memes")
+)
+
+# Watch it suffer
+assistant.run("skibidi toilet")
+```
+
+## Groq (LLM)
+
+`Groq` (LLM, inherited from `BasedLLM`) uses `functions-groq` from `preprompted-data` to implement function calling.
+
+<Info>
+  **Technical Info** The prompt is used to determine whether to use a function or not. It does not return regular replies.
+</Info>
