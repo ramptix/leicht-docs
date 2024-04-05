@@ -45,13 +45,13 @@
       "pages": [
         "introduction",
         "quickstart",
-        "development",
-        "prompts"
+        "development"
       ]
     },
     {
       "group": "Essentials",
       "pages": [
+        "prompts",
         "essentials/markdown",
         "essentials/code",
         "essentials/images",
