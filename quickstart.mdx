@@ -1,34 +1,44 @@
 ---
 title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+description: 'Build your first assistant within minutes.'
 ---
 
-## Setup your development
+## Install
 
-Learn how to update your docs locally and and deploy them to the public.
+First things first, install the `leicht` package. You can install it using `pip` or from source.
 
-### Edit and preview
+<CodeGroup>
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
+```bash Pip
+$ pip install leicht
+```
 
-### Deploy your changes
+```bash Source
+$ git clone https://github.com/ramptix/leicht
+$ cd leicht
+$ pip install .
+```
+
+</CodeGroup>
+
+### Build an Assistant
+
+We'll be building an assistant using `Assistant` and the `G4F`<sup>1</sup>.
+
+```python
+from leicht import Assistant
+
+# Build an assistant
+assistant = Assistant(
+  "You're a helpful assistant.", # System prompt
+  llm="g4f" # Specify the g4f LLM
+)
+
+# Run the assistant
+assistant.run("Hi!")
+```
+
+<sup>1</sup> Although `G4F` is free, it should ONLY be used for trial and NOT for production.
 
 <AccordionGroup>
 
