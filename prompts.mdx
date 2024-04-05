@@ -43,26 +43,30 @@ get_prompt(
 )
 ```
 
+## Community Prompts
+
+Community Prompts from [Discussions](https://github.com/ramptix/preprompted-data/discussions) can be accessed with `community/<discussion id>`.
+
+For example, if we want to use [RapperGPT – #2](https://github.com/ramptix/preprompted-data/discussions/2) by the community:
+
+```python
+# First fetch will take a moment
+get_prompt("community/2")
+```
+
 ## Usage With Assistant
 
-The `leicht.prompts` module works seamlessly with the `Assistant` API. (Or should I say we can literally just pass the value in 😱😱💀)
+The `leicht.prompts` module works seamlessly with the `Assistant` API. Provide a valid prompt specification and Leicht will fetch the prompt directly.
 
 ```python
 from leicht import Assistant
 
 # Initialize an assistant
 assistant = Assistant(
-  description=get_llm("store/genz-memes")
+  "store/genz-memes",
+  llm=...
 )
 
 # Watch it suffer
 assistant.run("skibidi toilet")
 ```
-
-## Groq (LLM)
-
-`Groq` (LLM, inherited from `BasedLLM`) uses `functions-groq` from `preprompted-data` to implement function calling.
-
-<Info>
-  **Technical Info** The prompt is used to determine whether to use a function or not. It does not return regular replies.
-</Info>
