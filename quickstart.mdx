@@ -33,11 +33,13 @@ Here, we'll add the "search" tool to allow the LLM to look up resources online.
 
 ```python app.py
 from leicht import Assistant
+from leicht.tools import Google
 
 # Build an assistant
 assistant = Assistant(
   "You're a helpful assistant.", # System prompt
-  llm="g4f" # Specify the g4f LLM *trial only*
+  llm="g4f", # Specify the g4f LLM *trial only*
+  tools=[Google()]
 )
 
 # Run the assistant
@@ -46,30 +48,22 @@ assistant.run("Is The Matrix 5 out yet?")
 
 <sup>1</sup>G4F – Although `G4F` is free, it should ONLY be used for trial and NOT for production.
 
-## Learn
+## Read More
 
 Learn more about Leicht.
 
 <CardGroup>
 
-<Card title="Prompts" icon="paragraph" href="/promptd">
+<Card title="Prompts" icon="paragraph" href="/prompts">
   Master the Prompts API and get a tailored voice.
 </Card>
 
 <Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
+  title="Build Your Tool"
+  icon="tool"
+  href="/tools"
 >
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
-
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
+  Build your own tool using the Tools API.
 </Card>
 
 <Card
